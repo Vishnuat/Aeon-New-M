@@ -43,7 +43,6 @@ async def get_user_settings(from_user):
     user_dict = user_data.get(user_id, {})
     thumbnail = thumbpath if await aiopath.exists(thumbpath) else no_thumb
     ex_ex = user_dict.get("excluded_extensions", extension_filter or "None")
-    meta_msg = user_dict.get("metadata", Config.METADATA_KEY or "None")
     wm_msg = user_dict.get("watermark", Config.WATERMARK_KEY or "None")
     ns_msg = "Added" if user_dict.get("name_sub", False) else "None"
     ytopt = user_dict.get("yt_opt", Config.YT_DLP_OPTIONS or "None")
@@ -385,6 +384,10 @@ async def edit_user_settings(client, query):
 
         buttons.data_button("Back", f"userset {user_id} back")
         buttons.data_button("Close", f"userset {user_id} close")
+
+        user_dict = user_data.get(user_id, {})
+        meta_msg = user_dict.get("metadata", Config.METADATA_KEY or "None")
+        
         text = f""">Leech Settings
 
 **Leech Type:** {ltype}
