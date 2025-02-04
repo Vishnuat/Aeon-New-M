@@ -459,8 +459,6 @@ async def edit_user_settings(client, query):
 
 **Gdrive Token:** {tokenmsg}
 **Gdrive ID:** `{gdrive_id}`
-**Excluded extension:** `{ex_ex}`
-**YT-DLP Options:** `{ytopt}`
 **Index URL:** `{index}`
 **Stop Duplicate:** {sd_msg}"""
         await edit_message(message, text, buttons.build_menu(1), markdown=True)
