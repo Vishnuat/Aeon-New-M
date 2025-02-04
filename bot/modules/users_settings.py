@@ -79,7 +79,15 @@ async def get_user_settings(from_user):
 
     # Text
     text = f""">Settings
+    
+    **Rclone Config:** {rccmsg}
+    **Gdrive Token:** {tokenmsg}
+    **Name Substitution:** `{ns_msg}`
+    **FFmpeg Commands:** `{ffc}`
     **Metadata Title:** `{meta_msg}`
+    **Watermark Text:** `{wm_msg}`
+    **Excluded extension:** `{ex_ex}`
+    **YT-DLP Options:** `{ytopt}`
     """
 
     return text, buttons.build_menu(2), thumbnail
@@ -399,9 +407,6 @@ async def edit_user_settings(client, query):
 **Leech Prefix:** `{lprefix}`
 **Leech dump chat:** `{dump}`
 **Leech Caption:** `{lcaption}`
-**Watermark Text:** `{wm_msg}`
-**Remname:** `{ns_msg}`
-**FFmpeg Commands:** `{ffc}`
 """
         # **User Custom Dump:** `{user_dump}`
 
@@ -463,8 +468,6 @@ async def edit_user_settings(client, query):
 
 **Gdrive Token:** {tokenmsg}
 **Gdrive ID:** `{gdrive_id}`
-**Rclone Config:** {rccmsg}
-**Gdrive Token:** {tokenmsg}
 **Excluded extension:** `{ex_ex}`
 **YT-DLP Options:** `{ytopt}`
 **Index URL:** `{index}`
