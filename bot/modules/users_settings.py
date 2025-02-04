@@ -63,7 +63,7 @@ async def get_user_settings(from_user):
     trr = "OWNER" if user_tokens else "MY"
 
     # Buttons
-        await user_dict.get("as_doc", False) or (
+            user_dict.get("as_doc", False) or (
             "as_doc" not in user_dict and Config.AS_DOCUMENT
         ):
             ltype = "DOCUMENT"
