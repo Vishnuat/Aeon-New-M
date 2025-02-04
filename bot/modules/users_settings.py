@@ -66,16 +66,7 @@ async def get_user_settings(from_user):
     buttons.data_button("Rclone", f"userset {user_id} rclone")
     buttons.data_button("Gdrive Tools", f"userset {user_id} gdrive")
     buttons.data_button("Upload Paths", f"userset {user_id} upload_paths")
-    buttons.data_button(f"Use {dur}", f"userset {user_id} {default_upload}")
-    buttons.data_button(
-        f"Use {trr} token/config",
-        f"userset {user_id} user_tokens {user_tokens}",
-    )
    
-
-    if user_dict:
-        buttons.data_button("Reset All", f"userset {user_id} reset")
-    buttons.data_button("Close", f"userset {user_id} close")
 
     # Text
     text = f""">Settings
@@ -435,6 +426,17 @@ async def edit_user_settings(client, query):
         buttons.data_button("Default Gdrive ID", f"userset {user_id} gdid")
         buttons.data_button("Excluded Extensions", f"userset {user_id} ex_ex")
         buttons.data_button("YT-DLP Options", f"userset {user_id} yto")
+        buttons.data_button(f"Use {dur}", f"userset {user_id} {default_upload}")
+        buttons.data_button(
+        f"Use {trr} token/config",
+        f"userset {user_id} user_tokens {user_tokens}",
+    )
+   
+
+    if user_dict:
+        buttons.data_button("Reset All", f"userset {user_id} reset")
+    buttons.data_button("Close", f"userset {user_id} close")
+    
         buttons.data_button("Index URL", f"userset {user_id} index")
         if user_dict.get("stop_duplicate", False) or (
             "stop_duplicate" not in user_dict and Config.STOP_DUPLICATE
