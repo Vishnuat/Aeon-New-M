@@ -362,12 +362,12 @@ async def edit_user_settings(client, query):
             TgClient.IS_PREMIUM_USER and user_dict.get("user_transmission", False)
         ) or ("user_transmission" not in user_dict and Config.USER_TRANSMISSION):
             buttons.data_button(
-                "4GB ON 💥",
+                "4GB OFF ❌",
                 f"userset {user_id} user_transmission false",
             )
         elif TgClient.IS_PREMIUM_USER:
             buttons.data_button(
-                "4 GB OFF ❌",
+                "4GB ON 💥",
                 f"userset {user_id} user_transmission true",
             )
 
