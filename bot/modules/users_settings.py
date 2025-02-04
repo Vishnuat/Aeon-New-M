@@ -71,12 +71,7 @@ async def get_user_settings(from_user):
         f"Use {trr} token/config",
         f"userset {user_id} user_tokens {user_tokens}",
     )
-    buttons.data_button("Excluded Extensions", f"userset {user_id} ex_ex")
-    buttons.data_button("Metadata", f"userset {user_id} metadata_key")
-    buttons.data_button("Watermark", f"userset {user_id} watermark_key")
-    buttons.data_button("Remname", f"userset {user_id} name_substitute")
-    buttons.data_button("YT-DLP Options", f"userset {user_id} yto")
-    buttons.data_button("Ffmpeg Cmds", f"userset {user_id} ffc")
+   
 
     if user_dict:
         buttons.data_button("Reset All", f"userset {user_id} reset")
@@ -305,6 +300,10 @@ async def edit_user_settings(client, query):
             await update_user_settings(query)
             await database.update_user_data(user_id)
     elif data[2] == "leech":
+        buttons.data_button("Metadata", f"userset {user_id} metadata_key")
+        buttons.data_button("Watermark", f"userset {user_id} watermark_key")
+        buttons.data_button("Remname", f"userset {user_id} name_substitute")
+        buttons.data_button("Ffmpeg Cmds", f"userset {user_id} ffc")
         await query.answer()
         thumbpath = f"Thumbnails/{user_id}.jpg"
         buttons = ButtonMaker()
@@ -433,6 +432,8 @@ async def edit_user_settings(client, query):
         buttons = ButtonMaker()
         buttons.data_button("token.pickle", f"userset {user_id} token")
         buttons.data_button("Default Gdrive ID", f"userset {user_id} gdid")
+        buttons.data_button("Excluded Extensions", f"userset {user_id} ex_ex")
+        buttons.data_button("YT-DLP Options", f"userset {user_id} yto")
         buttons.data_button("Index URL", f"userset {user_id} index")
         if user_dict.get("stop_duplicate", False) or (
             "stop_duplicate" not in user_dict and Config.STOP_DUPLICATE
