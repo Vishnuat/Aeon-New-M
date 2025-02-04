@@ -63,7 +63,7 @@ async def get_user_settings(from_user):
     trr = "OWNER" if user_tokens else "MY"
 
     # Buttons
-    if await user_dict.get("as_doc", False) or (
+        await user_dict.get("as_doc", False) or (
             "as_doc" not in user_dict and Config.AS_DOCUMENT
         ):
             ltype = "DOCUMENT"
@@ -85,6 +85,7 @@ async def get_user_settings(from_user):
                 f"userset {user_id} media_group true",
             )
             media_group = "Disabled"
+            
             await query.answer()
         thumbpath = f"Thumbnails/{user_id}.jpg"
         buttons = ButtonMaker()
@@ -120,12 +121,12 @@ async def get_user_settings(from_user):
             TgClient.IS_PREMIUM_USER and user_dict.get("user_transmission", False)
         ) or ("user_transmission" not in user_dict and Config.USER_TRANSMISSION):
             buttons.data_button(
-                "Leech by Bot",
+                "4GB ON 💥",
                 f"userset {user_id} user_transmission false",
             )
         elif TgClient.IS_PREMIUM_USER:
             buttons.data_button(
-                "Leech by User",
+                "4GB OFF ❌",
                 f"userset {user_id} user_transmission true",
             )
 
