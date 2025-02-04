@@ -73,9 +73,9 @@ async def get_user_settings(from_user):
         f"userset {user_id} user_tokens {user_tokens}",
     )
     buttons.data_button("Excluded Extensions", f"userset {user_id} ex_ex")
-    buttons.data_button("Metadata key", f"userset {user_id} metadata_key")
-    buttons.data_button("Watermark text", f"userset {user_id} watermark_key")
-    buttons.data_button("Name Subtitute", f"userset {user_id} name_substitute")
+    buttons.data_button("Metadata", f"userset {user_id} metadata_key")
+    buttons.data_button("Watermark", f"userset {user_id} watermark_key")
+    buttons.data_button("Remname", f"userset {user_id} name_substitute")
     buttons.data_button("YT-DLP Options", f"userset {user_id} yto")
     buttons.data_button("Ffmpeg Cmds", f"userset {user_id} ffc")
 
