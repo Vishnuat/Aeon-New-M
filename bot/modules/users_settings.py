@@ -78,6 +78,8 @@ async def get_user_settings(from_user):
 
     # Text
     text = f""">Settings
+    **Metadata Title:** `{meta_msg}`
+    **Custom Thumbnail:** {thumbmsg}
 """
 
     return text, buttons.build_menu(2), thumbnail
@@ -397,7 +399,6 @@ async def edit_user_settings(client, query):
 **Leech Prefix:** `{lprefix}`
 **Leech dump chat:** `{dump}`
 **Leech Caption:** `{lcaption}`
-**Metadata Title:** {meta_msg}
 **Watermark Text:** `{wm_msg}`
 **Remname:** `{ns_msg}`
 **FFmpeg Commands:** `{ffc}`
