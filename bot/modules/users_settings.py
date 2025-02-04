@@ -28,7 +28,7 @@ from bot.helper.telegram_helper.message_utils import (
 )
 
 handler_dict = {}
-no_thumb = "https://graph.org/file/73ae908d18c6b38038071.jpg"
+no_thumb = "https://i.ibb.co/s64SfSx/IMG-20250117-173922-934.jpg"
 
 
 async def get_user_settings(from_user):
@@ -63,6 +63,92 @@ async def get_user_settings(from_user):
     trr = "OWNER" if user_tokens else "MY"
 
     # Buttons
+    if user_dict.get("as_doc", False) or (
+            "as_doc" not in user_dict and Config.AS_DOCUMENT
+        ):
+            ltype = "DOCUMENT"
+            buttons.data_button("Send As Media", f"userset {user_id} as_doc false")
+        else:
+            ltype = "MEDIA"
+            buttons.data_button("Send As Document", f"userset {user_id} as_doc true")
+        if user_dict.get("media_group", False) or (
+            "media_group" not in user_dict and Config.MEDIA_GROUP
+        ):
+            buttons.data_button(
+                "Disable Media Group",
+                f"userset {user_id} media_group false",
+            )
+            media_group = "Enabled"
+        else:
+            buttons.data_button(
+                "Enable Media Group",
+                f"userset {user_id} media_group true",
+            )
+            media_group = "Disabled"
+            await query.answer()
+        thumbpath = f"Thumbnails/{user_id}.jpg"
+        buttons = ButtonMaker()
+        buttons.data_button("Thumbnail", f"userset {user_id} sthumb")
+        if user_dict.get("user_dump", False):
+            dump = user_dict["user_dump"]
+        else:
+            dump = "None"
+        buttons.data_button("Dump", f"userset {user_id} u_dump")
+        buttons.data_button("Session", f"userset {user_id} s_string")
+        if user_dict.get("session_string", False):
+            session_string = "Exists"
+        else:
+            session_string = "Not exists"
+        thumbmsg = "Exists" if await aiopath.exists(thumbpath) else "Not Exists"
+        split_size = Config.LEECH_SPLIT_SIZE
+        buttons.data_button("Leech Destination", f"userset {user_id} ldest")
+        buttons.data_button("Leech Prefix", f"userset {user_id} leech_prefix")
+        if user_dict.get("lprefix", False):
+            lprefix = user_dict["lprefix"]
+        elif "lprefix" not in user_dict and Config.LEECH_FILENAME_PREFIX:
+            lprefix = Config.LEECH_FILENAME_PREFIX
+        else:
+            lprefix = "None"
+        buttons.data_button("Leech Caption", f"userset {user_id} leech_caption")
+        if user_dict.get("lcaption", False):
+            lcaption = user_dict["lcaption"]
+        elif "lcaption" not in user_dict and Config.LEECH_FILENAME_CAPTION:
+            lcaption = Config.LEECH_FILENAME_CAPTION
+        else:
+            lcaption = "None"
+        if (
+            TgClient.IS_PREMIUM_USER and user_dict.get("user_transmission", False)
+        ) or ("user_transmission" not in user_dict and Config.USER_TRANSMISSION):
+            buttons.data_button(
+                "Leech by Bot",
+                f"userset {user_id} user_transmission false",
+            )
+        elif TgClient.IS_PREMIUM_USER:
+            buttons.data_button(
+                "Leech by User",
+                f"userset {user_id} user_transmission true",
+            )
+
+        if (TgClient.IS_PREMIUM_USER and user_dict.get("mixed_leech", False)) or (
+            "mixed_leech" not in user_dict and Config.MIXED_LEECH
+        ):
+            buttons.data_button(
+                "Disable Mixed Leech",
+                f"userset {user_id} mixed_leech false",
+            )
+        elif TgClient.IS_PREMIUM_USER:
+            buttons.data_button(
+                "Enable Mixed Leech",
+                f"userset {user_id} mixed_leech true",
+            )
+
+        buttons.data_button("Thumbnail Layout", f"userset {user_id} tlayout")
+        if user_dict.get("thumb_layout", False):
+            thumb_layout = user_dict["thumb_layout"]
+        elif "thumb_layout" not in user_dict and Config.THUMBNAIL_LAYOUT:
+            thumb_layout = Config.THUMBNAIL_LAYOUT
+        else:
+            thumb_layout = "None"
     buttons.data_button("Leech", f"userset {user_id} leech")
     buttons.data_button("Rclone", f"userset {user_id} rclone")
     buttons.data_button("Gdrive Tools", f"userset {user_id} gdrive")
@@ -337,28 +423,6 @@ async def edit_user_settings(client, query):
             lcaption = Config.LEECH_FILENAME_CAPTION
         else:
             lcaption = "None"
-        if user_dict.get("as_doc", False) or (
-            "as_doc" not in user_dict and Config.AS_DOCUMENT
-        ):
-            ltype = "DOCUMENT"
-            buttons.data_button("Send As Media", f"userset {user_id} as_doc false")
-        else:
-            ltype = "MEDIA"
-            buttons.data_button("Send As Document", f"userset {user_id} as_doc true")
-        if user_dict.get("media_group", False) or (
-            "media_group" not in user_dict and Config.MEDIA_GROUP
-        ):
-            buttons.data_button(
-                "Disable Media Group",
-                f"userset {user_id} media_group false",
-            )
-            media_group = "Enabled"
-        else:
-            buttons.data_button(
-                "Enable Media Group",
-                f"userset {user_id} media_group true",
-            )
-            media_group = "Disabled"
         if (
             TgClient.IS_PREMIUM_USER and user_dict.get("user_transmission", False)
         ) or ("user_transmission" not in user_dict and Config.USER_TRANSMISSION):
