@@ -79,8 +79,7 @@ async def get_user_settings(from_user):
     # Text
     text = f""">Settings
     **Metadata Title:** `{meta_msg}`
-    **Custom Thumbnail:** {thumbmsg}
-"""
+    """
 
     return text, buttons.build_menu(2), thumbnail
 
