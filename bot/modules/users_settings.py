@@ -63,15 +63,16 @@ async def get_user_settings(from_user):
     trr = "OWNER" if user_tokens else "MY"
 
     # Buttons
-            user_dict.get("as_doc", False) or (
+            if user_dict.get("as_doc", False) or (
             "as_doc" not in user_dict and Config.AS_DOCUMENT
         ):
             ltype = "DOCUMENT"
             buttons.data_button("Send As Media", f"userset {user_id} as_doc false")
-        else:
+       
             ltype = "MEDIA"
             buttons.data_button("Send As Document", f"userset {user_id} as_doc true")
-        if user_dict.get("media_group", False) or (
+        
+.          if user_dict.get("media_group", False) or (
             "media_group" not in user_dict and Config.MEDIA_GROUP
         ):
             buttons.data_button(
