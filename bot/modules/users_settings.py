@@ -79,16 +79,7 @@ async def get_user_settings(from_user):
 
     # Text
     text = f""">Settings
-    
-**Rclone Config:** {rccmsg}
-**Gdrive Token:** {tokenmsg}
-**Name Substitution:** `{ns_msg}`
-**FFmpeg Commands:** `{ffc}`
-**Metadata Title:** `{meta_msg}`
-**Watermark Text:** `{wm_msg}`
-**Excluded extension:** `{ex_ex}`
-**YT-DLP Options:** `{ytopt}`
-"""
+    """
 
     return text, buttons.build_menu(2), thumbnail
 
