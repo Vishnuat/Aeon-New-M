@@ -72,9 +72,9 @@ async def get_user_settings(from_user):
         f"userset {user_id} user_tokens {user_tokens}",
     )
     buttons.data_button("Excluded Extensions", f"userset {user_id} ex_ex")
-    buttons.data_button("Metadata key", f"userset {user_id} metadata_key")
-    buttons.data_button("Watermark text", f"userset {user_id} watermark_key")
-    buttons.data_button("Name Subtitute", f"userset {user_id} name_substitute")
+    buttons.data_button("Metadata", f"userset {user_id} metadata_key")
+    buttons.data_button("Watermark", f"userset {user_id} watermark_key")
+    buttons.data_button("Remname", f"userset {user_id} name_substitute")
     buttons.data_button("YT-DLP Options", f"userset {user_id} yto")
     buttons.data_button("Ffmpeg Cmds", f"userset {user_id} ffc")
 
@@ -87,7 +87,7 @@ async def get_user_settings(from_user):
 
 **Rclone Config:** {rccmsg}
 **Gdrive Token:** {tokenmsg}
-**Name Substitution:** `{ns_msg}`
+**Remname:** `{ns_msg}`
 **FFmpeg Commands:** `{ffc}`
 **Metadata Title:** `{meta_msg}`
 **Watermark Text:** `{wm_msg}`
@@ -362,12 +362,12 @@ async def edit_user_settings(client, query):
             TgClient.IS_PREMIUM_USER and user_dict.get("user_transmission", False)
         ) or ("user_transmission" not in user_dict and Config.USER_TRANSMISSION):
             buttons.data_button(
-                "Leech by Bot",
+                "4GB ON 💥",
                 f"userset {user_id} user_transmission false",
             )
         elif TgClient.IS_PREMIUM_USER:
             buttons.data_button(
-                "Leech by User",
+                "4 GB OFF ❌",
                 f"userset {user_id} user_transmission true",
             )
 
