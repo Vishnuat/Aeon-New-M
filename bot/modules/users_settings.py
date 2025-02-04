@@ -435,8 +435,7 @@ async def edit_user_settings(client, query):
 
     if user_dict:
         buttons.data_button("Reset All", f"userset {user_id} reset")
-    buttons.data_button("Close", f"userset {user_id} close")
-    
+        buttons.data_button("Close", f"userset {user_id} close")
         buttons.data_button("Index URL", f"userset {user_id} index")
         if user_dict.get("stop_duplicate", False) or (
             "stop_duplicate" not in user_dict and Config.STOP_DUPLICATE
