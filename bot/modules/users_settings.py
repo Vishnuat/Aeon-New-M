@@ -43,6 +43,7 @@ async def get_user_settings(from_user):
     user_dict = user_data.get(user_id, {})
     thumbnail = thumbpath if await aiopath.exists(thumbpath) else no_thumb
     ex_ex = user_dict.get("excluded_extensions", extension_filter or "None")
+    meta_msg = user_dict.get("metadata", Config.METADATA_KEY or "None")
     wm_msg = user_dict.get("watermark", Config.WATERMARK_KEY or "None")
     ns_msg = "Added" if user_dict.get("name_sub", False) else "None"
     ytopt = user_dict.get("yt_opt", Config.YT_DLP_OPTIONS or "None")
