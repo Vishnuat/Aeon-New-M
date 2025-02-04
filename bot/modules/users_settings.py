@@ -385,8 +385,6 @@ async def edit_user_settings(client, query):
         buttons.data_button("Back", f"userset {user_id} back")
         buttons.data_button("Close", f"userset {user_id} close")
 
-        user_dict = user_data.get(user_id, {})
-        meta_msg = user_dict.get("metadata", Config.METADATA_KEY or "None")
         
         text = f""">Leech Settings
 
@@ -399,7 +397,7 @@ async def edit_user_settings(client, query):
 **Leech Prefix:** `{lprefix}`
 **Leech dump chat:** `{dump}`
 **Leech Caption:** `{lcaption}`
-**Metadata Title:** `{meta_msg}`
+**Metadata Title:** {meta_msg}
 **Watermark Text:** `{wm_msg}`
 **Remname:** `{ns_msg}`
 **FFmpeg Commands:** `{ffc}`
