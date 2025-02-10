@@ -6,10 +6,10 @@ i = Config.CMD_SUFFIX
 
 class BotCommands:
     StartCommand = "start"
-    MirrorCommand = [f"mirror{i}", f"Mirror{i}", f"m{i}", f"M{i}"]
+    MirrorCommand = [f"mirror{i}", f"Mirror{i}", f"m{i}", f"M{i}", "rssl"]
     JdMirrorCommand = [f"jdmirror{i}", f"jm{i}"]
     YtdlCommand = [f"ytmirror{i}", f"ym{i}", f"Ym{i}"]
-    LeechCommand = [f"leech{i}", f"Leech{i}", f"l{i}", f"L{i}", "rssl"]
+    LeechCommand = [f"leech{i}", f"Leech{i}", f"l{i}", f"L{i}"]
     JdLeechCommand = [f"jdleech{i}", f"jl{i}"]
     YtdlLeechCommand = [f"ytleech{i}", f"yl{i}", f"Yl{i}"]
     CloneCommand = f"clone{i}"
